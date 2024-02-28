@@ -1,5 +1,7 @@
 package com.alibou.security.auth;
 
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,12 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
+@Hidden
 public class AuthenticationController {
 
     @Autowired
     private final AuthenticationService service;
 
     @PostMapping("/register")
+//    @Hidden
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
     ){
@@ -24,6 +28,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/authenticate")
+//    @Hidden
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request
     ){
